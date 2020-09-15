@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Online Transpool</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="../../common/jquery-2.0.3.min.js"></script>
+    <script src="../../common/context-path-helper.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="profile.js"></script>
+    <script src="profilechat.js"></script>
+    <link rel="stylesheet" href="profile.css">
+
+    <!-- Link the Bootstrap (from twitter) CSS framework in order to use its classes-->
+    <link rel="stylesheet" href="../../common/bootstrap.min.css">
+
+    <!-- Link jQuery JavaScript library in order to use the $ (jQuery) method-->
+    <!-- <script src="common/jquery-2.0.3.min.js"></script>-->
+    <!-- and\or any other scripts you might need to operate the JSP file behind the scene once it arrives to the client-->
+</head>
+<body>
+<div id="alert"></div>
+<div class="container">
+    <h1>Welcome to the Online Transpool</h1>
+<hr>
+<br>
+    <form action="upload" enctype="multipart/form-data" method="POST">
+        <div>
+            <h4 style="display: inline">Select a map name:</h4>
+            <input type="text" name="map_name" required/>
+            <input type="file" name="file" accept=".xml" required>
+        </div>
+        <br>
+        <input type="Submit" value="Upload File">
+    </form>
+<br>
+    <div class="table-responsive">
+        <table class="grid" cellspacing="0" id="dataTable">
+            <tbody>
+            <tr>
+                <th colspan="1.5">  </th>
+                <th colspan="2"> User name </th>
+                <th colspan="2"> Map name </th>
+                <th colspan="2"> Number of stations </th>
+                <th colspan="2"> Number of roads </th>
+                <th colspan="2"> Number of offers </th>
+                <th colspan="2"> Number of requests </th>
+            </tr>
+            </tbody>
+            <tbody id="MapsData"></tbody>
+        </table>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <h4 style="display: inline">Balance: </h4>
+        <h4 id="currentBalance" style="display: inline"> 0 </h4>
+    </div>
+    <form id="loadForm" method="POST" action="loadMoney">
+        <input type="number" min="1" name="amount" id="amount" required/>
+        <input type="submit" value="Load Money"/>
+    </form>
+    <br>
+    <div class="table-responsive">
+        <table class="grid" cellspacing="0">
+            <tbody>
+            <tr>
+                <th colspan="2"> Type </th>
+                <th colspan="2"> Date </th>
+                <th colspan="2"> Amount </th>
+                <th colspan="2"> Balance before action </th>
+                <th colspan="2"> Balance after action </th>
+            </tr>
+            </tbody>
+            <tbody id="balance"></tbody>
+        </table>
+    </div>
+</div>
+
+<button class="open-button" onclick="openForm()">Online Chat</button>
+<div class="chat-popup" id="chatwindow">
+    <h1>Chat</h1>
+    <label for="userslist"><b>All Users</b></label>
+    <div class="clearfix">
+        <div class="input">
+            <ul id="userslist">
+            </ul>
+        </div>
+    </div>
+    <label for="chatarea"><b>All Messages</b></label>
+    <div id="chatarea" class="span6"></div>
+    <form id="chatform" method="POST" action="sendChat" class="form-container">
+        <label for="userstring"><b>Message</b></label>
+        <textarea placeholder="Type message.." id="userstring" name="userstring" required></textarea>
+        <button type="submit" class="btn">Send</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+</div>
+</body>
+</html>

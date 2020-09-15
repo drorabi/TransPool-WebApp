@@ -1,0 +1,70 @@
+<!-- Basic Tutorial: https://www.w3schools.com/graphics/svg_intro.asp -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="map.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="../../common/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="../../common/bootstrap.min.css">
+    <script src="../../common/context-path-helper.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="map.js"></script>
+    <script src="mapchat.js"></script>
+</head>
+<body>
+<div id="alert"></div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://localhost:8080/transpoolWeb/pages/profile/profile.html">Go Back</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav text-left" id="leftSide">
+            <h2>Actions:</h2>
+            <div id="actions" class="actions"></div>
+        </div>
+        <div class="col-sm-6 text-center">
+            <svg width="550" height="550" id="map" style="horiz-align:center">
+            </svg>
+        </div>
+        <div class="col-sm-3 sidenav text-left">
+            <h2>All Rides:</h2>
+            <div id="rideInfo" class="rideInfo"></div>
+            <h2>All Requests:</h2>
+            <div id="requestInfo" class="requestInfo"></div>
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center" id="firstCol">
+</footer>
+
+<button class="open-button" onclick="openForm()">Online Chat</button>
+<div class="chat-popup" id="chatwindow">
+    <h1>Chat</h1>
+    <label for="userslist"><b>All Users</b></label>
+    <div class="clearfix">
+        <div class="input">
+            <ul id="userslist">
+            </ul>
+        </div>
+    </div>
+    <label for="chatarea"><b>All Messages</b></label>
+    <div id="chatarea" class="span6"></div>
+    <form id="chatform" method="POST" action="sendChat" class="form-container">
+        <label for="userstring"><b>Message</b></label>
+        <textarea placeholder="Type message.." id="userstring" name="userstring" required></textarea>
+        <button type="submit" class="btn">Send</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+</div>
+</body>
+</html>
